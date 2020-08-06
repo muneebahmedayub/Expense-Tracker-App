@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./style.css">
 
 </head>
+
 <body>
     <div class="main">
         <div class="app">
@@ -32,14 +34,49 @@
                 <h2>Transaction History</h2>
                 <div class="line"></div>
                 <div class="history">
-                    
+                    <!-- <div class="history-element-plus">
+                        <div>
+                            <button class="del-element"><i class="fas fa-times"></i></button>
+                            <p class="desc-element">Income</p>
+                        </div>
+                        <h4 class="amount">$2000</h4>
+                    </div>
+                    <div class="history-element-minus">
+                        <div>
+                            <button class="del-element"><i class="fas fa-times"></i></button>
+                            <p class="desc-element">Expense</p>
+                        </div>
+                        <h4 class="amount">$300</h4>
+                    </div> -->
                 </div>
             </div>
             <div class="add-transaction">
-
+                <h2>Add New Transaction</h2>
+                <div class="line"></div>
+                <div class="exp-inc-btn">
+                    <div class="exp-inc-btn-slider"></div>
+                    <button class="inc-btn">Add Income</button><button class="exp-btn">Add Expense</button>
+                </div>
+                <form action="">
+                    <div>
+                        <div class="trans-desc">
+                            <label for="description">Transaction Descrip.</label> <br>
+                            <input maxlength="20" type="text" placeholder="Enter Description">
+                        </div>
+                        <div class="trans-amnt">
+                            <label for="amount">Transaction Amount</label> <br>
+                            <input min="1" max="50000" type="number" placeholder="Enter Amount">
+                        </div>
+                    </div>
+                    <button type="button">Add Transaction</button>
+                </form>
             </div>
         </div>
     </div>
 </body>
 <script src="./app.js"></script>
+
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
 </html>
