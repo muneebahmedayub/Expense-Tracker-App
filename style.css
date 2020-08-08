@@ -82,12 +82,14 @@
 .history {
     width: 90%; 
     height: 1fr;
+    max-height: 115px;
     margin: auto;
     margin-top: 10px;
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-start;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .history-element-plus, .history-element-minus {
@@ -100,12 +102,11 @@
     padding-right: 10px;
     margin: 5px 0px;
     border-radius: 10px 0px 0px 10px;
-    overflow: hidden;
 }
 
 .history-element-plus div, .history-element-minus div {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50px 1fr;
     align-items: center;
     height: 100%;
     width: 50%;
@@ -114,9 +115,15 @@
 .history-element-plus {
     border-right: 10px solid rgb(0, 143, 0);
 }
+.history-element-plus h4 {
+    color: green;
+}
 
 .history-element-minus {
     border-right: 10px solid rgb(180, 0, 0);
+}
+.history-element-minus h4 {
+    color: red;
 }
 
 .del-element {
@@ -127,12 +134,13 @@
     outline: none;
     opacity: 0;
     transition: 0.4s ease;
+    border-radius: 10px 0px 0px 10px;
+    cursor: pointer;
 }
 
 .del-element i {
     color: white;
     font-size: 20px;
-    cursor: pointer;
 }
 
 .del-element:hover {

@@ -16,6 +16,9 @@ const addTransBtn = document.querySelector(".add-trans-btn")
 
 // VARIABLES //
 var addExpense = true
+var expenseAmount = 0
+var incomeAmount = 0
+var currentBalanceAmount = 0
 
 
 // EVENT LISTENER //
@@ -31,8 +34,79 @@ incBtn.addEventListener("click", () => {
 
     addExpense = true
 })
-
+addTransBtn.addEventListener("click", addTransaction)
 
 
 // FUNCTIONS //
+function addTransaction() {
+    if (descInput.value.length !== 0 && amntInput.value.length !== 0) {
+        if (addExpense) {
+            const historyElementPlus = document.createElement("div")
+            historyElementPlus.classList.add("history-element-plus")
 
+            const historyElementInsideDiv = document.createElement("div")
+            historyElementPlus.appendChild(historyElementInsideDiv)
+
+            const delBtn = document.createElement("button")
+            delBtn.classList.add("del-element")
+            delBtn.innerHTML = '<i class="fas fa-times">'
+            historyElementInsideDiv.appendChild(delBtn)
+
+            const descElement = document.createElement("p")
+            descElement.classList.add("desc-element")
+            descElement.innerHTML = descInput.value
+            historyElementInsideDiv.appendChild(descElement)
+
+
+            const historyElementInsideH4 = document.createElement("h4")
+            historyElementPlus.appendChild(historyElementInsideH4)
+            historyElementInsideH4.innerHTML = "$" + amntInput.value
+
+            history.appendChild(historyElementPlus)
+
+            incomeAmount = parseFloat(incomeAmount)
+            incomeAmount += parseFloat(amntInput.value)
+            incomeAmount = incomeAmount.toFixed(2)
+
+            income.innerHTML = "$" + incomeAmount
+        }
+        else {
+            const historyElementMinus = document.createElement("div")
+            historyElementMinus.classList.add("history-element-minus")
+
+            const historyElementInsideDiv = document.createElement("div")
+            historyElementMinus.appendChild(historyElementInsideDiv)
+
+            const delBtn = document.createElement("button")
+            delBtn.classList.add("del-element")
+            delBtn.innerHTML = '<i class="fas fa-times">'
+            historyElementInsideDiv.appendChild(delBtn)
+
+            const descElement = document.createElement("p")
+            descElement.classList.add("desc-element")
+            descElement.innerHTML = descInput.value
+            historyElementInsideDiv.appendChild(descElement)
+
+
+
+            const historyElementInsideH4 = document.createElement("h4")
+            historyElementMinus.appendChild(historyElementInsideH4)
+            historyElementInsideH4.innerHTML = "$" + amntInput.value
+
+            history.appendChild(historyElementMinus)
+
+
+            expenseAmount = parseFloat(expenseAmount)
+            expenseAmount += parseFloat(amntInput.value)
+            expenseAmount = expenseAmount.toFixed(2)
+
+            expense.innerHTML = "$" + expenseAmount
+        }
+        history.scrollTo(0, 0)
+
+        currentBalanceAmount = (parseFloat(incomeAmount) - parseFloat(expenseAmount))
+        currentBalanceAmount = currentBalanceAmount.toFixed(2)
+
+        currentBalance.innerHTML = "$" + currentBalanceAmount
+    }
+}
