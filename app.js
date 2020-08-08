@@ -35,6 +35,7 @@ incBtn.addEventListener("click", () => {
     addExpense = true
 })
 addTransBtn.addEventListener("click", addTransaction)
+history.addEventListener("click", delTransaction)
 
 
 // FUNCTIONS //
@@ -108,5 +109,44 @@ function addTransaction() {
         currentBalanceAmount = currentBalanceAmount.toFixed(2)
 
         currentBalance.innerHTML = "$" + currentBalanceAmount
+
+
+        descInput.value = ""
+        amntInput.value = ""
+    }
+}
+
+function delTransaction (e) {
+    if (e.target.className === "del-element") {
+        var amount = parseFloat(e.target.parentNode.nextSibling.innerHTML.slice(1, ))
+
+
+        
+        if (e.target.parentNode.parentNode.className === "history-element-plus") {
+            incomeAmount = incomeAmount - amount
+            incomeAmount = incomeAmount.toFixed(2)
+            
+            income.innerHTML = "$" + incomeAmount
+            
+            
+            currentBalanceAmount = parseFloat(currentBalanceAmount) - amount
+            currentBalanceAmount.toFixed(2)
+            
+            currentBalance.innerHTML = "$" + currentBalanceAmount
+        }
+        else {
+            expenseAmount = expenseAmount - amount
+            expenseAmount = expenseAmount.toFixed(2)
+            
+            expense.innerHTML = "$" + expenseAmount
+            
+            
+            currentBalanceAmount = parseFloat(currentBalanceAmount) + amount
+            currentBalanceAmount.toFixed(2)
+
+            currentBalance.innerHTML = "$" + currentBalanceAmount
+        }
+        
+        e.target.parentNode.parentNode.remove()
     }
 }
